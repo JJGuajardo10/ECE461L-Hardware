@@ -18,6 +18,16 @@ const loginFields=[
         autoComplete:"current-password",
         isRequired:true,
         placeholder:"Password"   
+    },
+    {
+        labelText:"ProjectID",
+        labelFor:"projectid",
+        id:"projectid",
+        name:"projectid",
+        type:"projectid",
+        autoComplete:"current-projectid",
+        isRequired:true,
+        placeholder:"ProjectID"   
     }
 ]
 

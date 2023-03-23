@@ -8,6 +8,7 @@ export default function TeamPage(){
         <>
             <Navbar />
             <h1 className="font-mono ">Team Management</h1>
+            <h1 className="font-mono">manage members and have a list of them displayed for each project that the user manages</h1>
             
         </>
     )

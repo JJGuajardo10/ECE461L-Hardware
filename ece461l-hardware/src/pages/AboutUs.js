@@ -9,6 +9,7 @@ export default function AboutPage(){
         <>
             <Navbar />
             <h1 className="font-mono ">About us</h1>
+            <h1 className="font-mono">whatever about us</h1>
             
         </>
     )

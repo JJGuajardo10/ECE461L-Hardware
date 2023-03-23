@@ -7,9 +7,6 @@ export default function Title (){
         <h1 className='lg:tect-9xl md:text-7xl sm:text-5xl text-3xl font-black mb-14'>
             Group 5
         </h1>
-        <Link>
-            New? Sign up! 
-        </Link>  
     </div>
   )
 }

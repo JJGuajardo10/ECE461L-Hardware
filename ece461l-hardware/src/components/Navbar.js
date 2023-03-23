@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Navbar({toggle}){
   return (
-    <nav className='flex justify-between items-center h-16 bg-white text-black relative shadow-sm font-mono' role='navigation'>
+    <nav className='flex justify-between items-center h-16 bg-gradient-to-r from-cyan-500 to-blue-600  text-white relative shadow-sm font-mono' role='navigation'>
       <Link to='/' className='pl-8'>
         Group 5
       </Link>

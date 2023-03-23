@@ -7,7 +7,7 @@ export default function AccountPage(){
     return(
         <>
             <Navbar />
-            <h1>Account Management</h1>
+            <h1 className="font-mono">Account Management</h1>
             
         </>
     )

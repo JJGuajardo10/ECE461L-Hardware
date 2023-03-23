@@ -7,7 +7,7 @@ export default function TeamPage(){
     return(
         <>
             <Navbar />
-            <h1>Team Management</h1>
+            <h1 className="font-mono ">Team Management</h1>
             
         </>
     )

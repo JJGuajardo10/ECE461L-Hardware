@@ -32,6 +32,7 @@ useEffect(() => {
         <>
             <Navbar toggle={toggle}/>
             <Dropdown isOpen={isOpen} toggle={toggle}/>
+            <br></br>
             <Header
                 heading="Login to your account"
                 paragraph="Don't have an account yet? "

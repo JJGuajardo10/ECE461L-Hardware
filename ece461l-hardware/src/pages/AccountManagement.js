@@ -7,6 +7,7 @@ export default function AccountPage(){
     return(
         <>
             <Navbar />
+            <br></br>
             <h1 className="font-mono">Account Management</h1>
             <h1 className="font-mono">show which projects youre a part of</h1>
             

@@ -29,12 +29,15 @@ export default function AboutPage(){
     return(
         <>
             <Navbar />
+            <br></br>
             <h1 className="font-mono ">About us</h1>
             <h1 className="font-mono">whatever about us</h1>
-            <p>To get your profile details: </p><button onClick={getData}>Click me</button>
+            <br></br>
+            <p className="font-mono">To get your profile details: </p><br></br><button className="font-mono text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={getData}>Click me</button>
         {profileData && <div>
-              <p>Profile name: {profileData.profile_name}</p>
-              <p>About me: {profileData.about_me}</p>
+            <br></br>
+              <p className="font-mono">Profile name: {profileData.profile_name}</p>
+              <p className="font-mono">About me: {profileData.about_me}</p>
             </div>
         }
             

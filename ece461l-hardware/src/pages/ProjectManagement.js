@@ -8,6 +8,7 @@ export default function ProjectPage(){
     return(
         <>
             <Navbar />
+            <br></br>
             <div className="font-mono ">Project Management</div>
             <ProjectDisplay/>
             

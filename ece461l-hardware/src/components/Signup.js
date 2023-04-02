@@ -20,8 +20,20 @@ export default function Signup(){
   }
 
   //handle Signup API Integration here
-  const createAccount=()=>{
-
+  const createAccount= async ()=>{
+    const response = await fetch('http://localhost:5000/signUp/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(signupState),
+      mode: 'cors'
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    
+    console.log('This is the frontend :D')
   }
 
     return(

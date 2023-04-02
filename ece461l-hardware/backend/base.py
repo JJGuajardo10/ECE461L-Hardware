@@ -1,31 +1,31 @@
-import os
-
 from flask import Flask
-from config import Config
-from flask_cors import CORS  # comment this on deployment
-from flask_mongoengine import MongoEngine
+from database import db
+from api.config import Config
 from flask_jwt_extended import JWTManager
+from flask_bcrypt import Bcrypt
+from flask_cors import CORS
+
+jwt = JWTManager()
+bcrypt = Bcrypt()
+cors = CORS()
 
 
-db = MongoEngine() # db initialization occurs before the app starts
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(config_class)
 
-app = Flask(__name__)
-app.config.from_object(Config)
+    db.init_app(app)
+    jwt.init_app(app)
+    bcrypt.init_app(app)
+    cors.init_app(app)
 
-app.config['MONGODB_SETTINGS' ]= {
-    "db": "hardware",
-    "host": "localhost",
-    "port": 5000
-}
-db.init_app(app)
+    from api.routes.main import main
+    from api.routes.users import users
+    from api.routes.hardware import hardware
+    from api.routes.projects import projects
+    app.register_blueprint(main)
+    app.register_blueprint(users, url_prefix='/users')
+    app.register_blueprint(hardware, url_prefix='/hardware')
+    app.register_blueprint(projects, url_prefix='/projects')
 
-# hw1 = Hardware(name="Set1", capacity=512)
-
-jwt = JWTManager(app)
-
-CORS(app)
-
-from .routes import *
-from .models import init_hardware, init_godmin
-
-init_hardware()
+    return app

@@ -17,12 +17,30 @@ export default function Login(){
 
     const handleSubmit=(e)=>{
         e.preventDefault();
+        console.log(loginState);
         authenticateUser();
     }
 
     //Handle Login API Integration here
-    const authenticateUser = () =>{
+    const authenticateUser = async () =>{
+            try {
+              const response = await fetch('http://localhost:5000/login/', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(loginState),
+                mode: 'cors'
+              });
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              } else {
 
+              }
+              console.log('This is the frontend :D')
+            } catch (error) {
+              console.error(error);
+            }
     }
 
     return(

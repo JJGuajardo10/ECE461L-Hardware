@@ -4,17 +4,65 @@ import "./hardware_formatting.css"
 import currentProjectID from "./project_global"
 
 function Hardware(){
-	const [Hardware1, SetHardware1] = useState(-1);
-	const [Hardware2, SetHardware2] = useState(-1);
-	const [Capacity1, SetCapacity1] = useState(-1);
-	const [Capacity2, SetCapacity2] = useState(-1);
+	const [Hardware1, SetHardware1] = useState("");
+	const [Hardware2, SetHardware2] = useState("");
+	const [Capacity1, SetCapacity1] = useState("");
+	const [Capacity2, SetCapacity2] = useState("");
 	
-	const [projectHardware, SetProjectHardware] = useState (-1);
-	
+	const [projectHardware, SetProjectHardware] = useState ("");
+	async function AddHW()
+{
+  const [serverResponse, setServerResponse] = useState("No Response yet");
+  const namefield = useRef();
+  const qfield = useRef();
+
+  async function sendCredentials()
+  {
+    let name = namefield.current.value;
+    let q = qfield.current.value;
+    console.log("Entered name: " + name);
+    console.log("Enter q: " + q);
+       // Fetch protocol
+       let dict = {
+        method : "POST",
+        body : JSON.stringify({
+          name: name,
+          capacity:  q
+        })
+      };
+      let res = await fetch("/createHWSet" , dict);
+      let responseJson = await res.json();
+      if(responseJson['errorcode'] == 0)
+      {
+        setServerResponse("Hardware set added!");
+      }
+      else{
+        setServerResponse("Set not added!");
+      }
+  }
+
+  return(
+    <>
+      <h2>Add a hardware set</h2>
+      <div>
+          <h3>Enter a name and quantity</h3>
+          <input ref = {namefield} type = "text" placeholder = "Enter a set name" size = "21"></input>
+        </div>
+        <div>
+          <input ref = {qfield} type = "text" placeholder = "Enter an amount" size = "21"></input>
+        </div>
+        <div>
+          <button onClick = {() => sendCredentials()}>Enter</button>
+         <label>{serverResponse}</label>
+      </div>
+
+    </>
+  );
+}
 	async function getHardwareUpdate(){
 		
-      let name1 = "hwset1";
-      let name2 = "hwset2";
+      let name1 = "hwSet1";
+      let name2 = "hwSet2";
       let myproj = currentProjectID;
          
       let dict1 = {

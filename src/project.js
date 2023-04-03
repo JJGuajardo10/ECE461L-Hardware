@@ -9,11 +9,15 @@ function Project_Board(){
    const [project_id, setID] = useState(0); //initial project is ID 0
    const [project_name, setName] = useState("")
    const [project_description, setDescription] = useState("")
-   const [serverResponse, setServerResponse] = useState("No reponse yet");
+   const [HWSet1_cap, setCap1] = useState("")
+   const [HWSet2_cap, setCap2] = useState("")
+   const [serverResponse, setServerResponse] = useState("No response yet");
    //to get user input from uncontrolled input fields
    const name_field = useRef();
    const description_field = useRef();
    const id_field = useRef();
+   const HWSet1Cap_field = useRef();
+   const HWSet2Cap_field = useRef();
 
    /*
     * Function to update the current state of name, id and description
@@ -27,8 +31,9 @@ function Project_Board(){
       let createProjectName = name_field.current.value;
       let createProjectID = id_field.current.value;
       let createProjectDescription =description_field.current.value;
-      //let assignHWSet1Cap = HWSet1Cap_field.current.value;
-      //let assignHWSet2ap = HWSet2Cap_field.current.value;
+      let assignHWSet1Cap = HWSet1Cap_field.current.value;
+      let assignHWSet2Cap = HWSet2Cap_field.current.value;
+
 
 
 
@@ -43,8 +48,9 @@ function Project_Board(){
          body: JSON.stringify({
             name: createProjectName,
             projectid: createProjectID,
-            description: createProjectDescription
-
+            description: createProjectDescription,
+            hwSet1: assignHWSet1Cap,
+            hwSet2: assignHWSet2Cap
          })
       };
 
@@ -101,14 +107,14 @@ function Project_Board(){
             <label>
                Enter Capacity for HWSet 1:
                <input
-                  ref = {description_field}
-                  type = "text" placeholder = "Enter Value"
+                  ref = {HWSet1Cap_field}
+                  type = "text" placeholder = "Enter  Value"
                />
             </label><br></br>
             <label>
                Enter Capacity for HWSet 2:
                <input
-                  ref = {description_field}
+                  ref = {HWSet2Cap_field}
                   type = "text" placeholder = "Enter Value"
                />
             </label>
@@ -129,15 +135,17 @@ function Project_Board(){
                <Link to ="/"> Home </Link>
             </li>
             <li>
-               <Link to = "/hardware"> Hardware </Link>
+               <Link to = "/hardware"> Hardware</Link>
             </li>
          </nav>
 
       </>
    )
+
 }
 
 export default Project_Board;
+
 function GetProject()
 {
   const [serverResponse, setServerResponse] = useState("No Response Yet");

@@ -27,16 +27,16 @@ function Project_Board(){
       let createProjectName = name_field.current.value;
       let createProjectID = id_field.current.value;
       let createProjectDescription =description_field.current.value;
-      let assignHWSet1Cap = HWSet1Cap_field.current.value;
-      let assignHWSet1Cap = HWSet1Cap_field.current.value;
+      //let assignHWSet1Cap = HWSet1Cap_field.current.value;
+      //let assignHWSet2ap = HWSet2Cap_field.current.value;
 
 
 
       console.log("name " + createProjectName);
       console.log("projectid: " + createProjectID);
       console.log("project description: "+createProjectDescription);
-      console.log("HWSET1 cap: " + assignHWSet1Cap);
-      console.log("HWSET2 cap: " + assignHWSet2Cap);
+      //console.log("HWSET1 cap: " + assignHWSet1Cap);
+      //console.log("HWSET2 cap: " + assignHWSet2Cap);
 
       let postDict = {
          method: "POST",
@@ -187,7 +187,8 @@ class Project extends React.Component{
    constructor(props){
       super (props);
       this.state = {
-         availableHardwareUnits: 50
+         availableHardwareSet1Units: props.availableHardwareSet1Units,
+         availableHardwareSet2Units: props.availableHardwareSet2Units
       };
    }
 //renders an instance of the Project class
@@ -197,13 +198,15 @@ class Project extends React.Component{
       const id = this.props.id;
       const name = this.props.name;
       const description = this.props.description;
-      const availableHardwareUnits = this.state.availableHardwareUnits;
+      const availableHardwareSet1Units = this.state.availableHardwareUnits;
+      const availableHardwareSet2Units = this.state.availableHardwareSet2Units;
       return (
          <div>
             <p> Project id: {id} </p>
             <p> Project name: {name} </p>
             <p> Project description: {description} </p>
-            <p> Available hardware: {availableHardwareUnits} </p>
+            <p> Available hardware for HWSet1: {availableHardwareSet1Units} </p>
+            <p> Available hardware for HWSet2: {availableHardwareSet2Units}</p>
          </div>
       );
    }

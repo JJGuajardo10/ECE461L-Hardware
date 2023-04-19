@@ -43,8 +43,8 @@ function Hardware(){
 
   return(
     <>
-      <h2>Add a hardware set</h2>
-      <div>
+      <h2 className="font-serif">Add a hardware set</h2>
+      <div className="font-serif">
           <h3>Enter a name and quantity</h3>
           <input ref = {namefield} type = "text" placeholder = "Enter a set name" size = "21"></input>
         </div>
@@ -52,7 +52,7 @@ function Hardware(){
           <input ref = {qfield} type = "text" placeholder = "Enter an amount" size = "21"></input>
         </div>
         <div>
-          <button onClick = {() => sendCredentials()}>Enter</button>
+          <button onClick = {() => sendCredentials()} className="font-serif hover:text-blue-700">Enter</button>
          <label>{serverResponse}</label>
       </div>
 
@@ -111,27 +111,27 @@ function Hardware(){
 
 	return (
       <>
-         <h3> Joined Project Hardware </h3>
-         <p> Currently joined to project with ID: {currentProjectID} </p>
-         <p> Hardware allocated to current project: {projectHardware}</p>
+         <h3 className="font-serif"> Joined Project Hardware </h3>
+         <p className="font-serif"> Currently joined to project with ID: {currentProjectID} </p>
+         <p className="font-serif"> Hardware allocated to current project: {projectHardware}</p>
          
-         <button onClick = { () => getHardwareUpdate()}>Refresh values</button>
+         <button className="font-serif hover:text-blue-700" onClick = { () => getHardwareUpdate()}>Refresh values</button>
          
-         <h3> HWSet1 </h3>
-         <p> Availability: {Hardware1}</p>
-         <p> Capacity: {Capacity1} </p>
+         <h3 className="font-serif"> HWSet1 </h3>
+         <p className="font-serif"> Availability: {Hardware1}</p>
+         <p className="font-serif"> Capacity: {Capacity1} </p>
          <GetHardwareButton1/>
          <ReturnHardwareButton1/>
          
-         <h3> HWSet2 </h3>
-         <p> Availability: {Hardware2}</p>
-         <p> Capacity: {Capacity2} </p>
+         <h3 className="font-serif"> HWSet2 </h3>
+         <p className="font-serif"> Availability: {Hardware2}</p>
+         <p className="font-serif"> Capacity: {Capacity2} </p>
          <GetHardwareButton2/>
          <ReturnHardwareButton2/>
          
          <br></br>
       
-         <nav>
+         <nav className="font-serif">
             <li>
                <Link to ="/"> Home </Link>
             </li>
@@ -186,13 +186,13 @@ function GetHardwareButton1(){
 	
    return(   
       <>
-         <label> Get Hardware from HWSet1 </label>
+         <label className="font-serif"> Get Hardware from HWSet1 </label>
          <input ref = {requestfield1} type="number" placeholder={"Enter request"}></input>
          <div> 
-            <button onClick = { () => getHardwareFrom1()}>
+            <button onClick = { () => getHardwareFrom1()} className="font-serif hover:text-blue-700">
                Checkout hardware 
             </button>
-            <p> Server Response: {getStatus1} </p>
+            <p className="font-serif"> Server Response: {getStatus1} </p>
          </div>
       </>
    ) 
@@ -228,13 +228,13 @@ function GetHardwareButton2(){
 	
    return (
       <>
-         <label> Get Hardware from HWSet2 </label>
+         <label className="font-serif"> Get Hardware from HWSet2 </label>
          <input ref = {requestfield2} type="number" placeholder={"Enter request"}></input>
-         <div> 
-            <button onClick = { () => getHardwareFrom2()}>
+         <div className="font-serif"> 
+            <button onClick = { () => getHardwareFrom2()} className="font-serif hover:text-blue-700">
                Checkout hardware 
             </button>
-            <p> Server response: {getStatus2} </p>
+            <p className="font-serif"> Server response: {getStatus2} </p>
          </div>
       </>
    )
@@ -270,11 +270,11 @@ function ReturnHardwareButton1(){
 
    return (
       <>
-         <label>  Enter amount of hardware to return: </label>
+         <label className="font-serif">  Enter amount of hardware to return: </label>
          <input ref = {returnfield1} type="number" placeholder="Enter an amount"></input>
          <br></br>
-         <button onClick = { () => returnHardwareTo1() }> Return hardware </button>
-         <p> Server Response: {returnStatus1} </p>
+         <button onClick = { () => returnHardwareTo1() } className="font-serif hover:text-blue-700"> Return hardware </button>
+         <p className="font-serif"> Server Response: {returnStatus1} </p>
       </>
    )	
 }
@@ -309,11 +309,11 @@ function ReturnHardwareButton2(){
 
    return (
       <>
-         <label>  Enter amount of hardware to return: </label>
+         <label className="font-serif">  Enter amount of hardware to return: </label>
          <input ref = {returnfield2} type="number" placeholder="Enter an amount"></input>
          <br></br>
-         <button onClick = { () => returnHardwareTo2() }> Return hardware </button>
-         <p> Server Response: {returnStatus2} </p>
+         <button onClick = { () => returnHardwareTo2() } className="font-serif hover:text-blue-700"> Return hardware </button>
+         <p className="font-serif"> Server Response: {returnStatus2} </p>
          
       </>
    )	

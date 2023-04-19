@@ -80,15 +80,15 @@ function Project_Board(){
          <br></br>
 
           <form>
-            <label> 
+            <label className="font-serif"> 
                Enter a project name: 
-               <input 
+               <input className="font-serif" 
                   ref = {name_field}
                   type = "text" placeholder = "Enter a name" 
                />
             </label>
          <br></br>
-            <label>
+            <label className="font-serif">
                Enter a project ID: 
                <input 
                   ref = {id_field}
@@ -96,7 +96,7 @@ function Project_Board(){
                />
             </label>
          <br></br>
-            <label>
+            <label className="font-serif">
                Enter a project description:
                <input 
                   ref = {description_field}
@@ -104,14 +104,14 @@ function Project_Board(){
                />
             </label>
             <br></br>
-            <label>
+            <label className="font-serif">
                Enter Capacity for HWSet 1:
                <input
                   ref = {HWSet1Cap_field}
                   type = "text" placeholder = "Enter  Value"
                />
             </label><br></br>
-            <label>
+            <label className="font-serif">
                Enter Capacity for HWSet 2:
                <input
                   ref = {HWSet2Cap_field}
@@ -120,17 +120,17 @@ function Project_Board(){
             </label>
          </form> 
 
-         <button onClick = {() => createProject()}> Create new project </button>
+         <button onClick = {() => createProject()} className="font-serif hover:text-blue-700"> Create new project </button>
 
-         <p className = "warning"> Do not use "!" or a space character </p>
+         <p className = "warning font-serif"> Do not use "!" or a space character </p>
             
             <GetProject/>
          
-         <p> You Have Joined: {serverResponse} </p>
+         <p className="font-serif"> You Have Joined: {serverResponse} </p>
 
 
 
-         <nav>
+         <nav className="font-serif">
             <li>
                <Link to ="/"> Home </Link>
             </li>
@@ -179,14 +179,14 @@ function GetProject()
     <>
       <div>
          <br></br>
-         <label>
+         <label className="font-serif">
           Enter Project ID to join:
           <input ref = {namefield} type = "text" placeholder = "Enter a project id" size = "21"></input>
          </label>
         </div>
         <div>
-          <button onClick = {() => sendCredentials()}>Join a project</button>
-         <p>Server Response for joining a project is: {serverResponse}</p>
+          <button onClick = {() => sendCredentials()} className="font-serif hover:text-blue-700">Join a project</button>
+         <p className="font-serif">Server Response for joining a project is: {serverResponse}</p>
       </div>
     </>
   );
@@ -209,7 +209,7 @@ class Project extends React.Component{
       const availableHardwareSet1Units = this.state.availableHardwareUnits;
       const availableHardwareSet2Units = this.state.availableHardwareSet2Units;
       return (
-         <div>
+         <div className="font-serif">
             <p> Project id: {id} </p>
             <p> Project name: {name} </p>
             <p> Project description: {description} </p>

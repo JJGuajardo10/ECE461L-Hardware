@@ -17,14 +17,14 @@ function HomeScreen() {
        {(Logged.value != 1) ? (
        <nav>
           <main>   
-          <h2>Home</h2>
-          <p1>Please Login Or Create and Account</p1>
+          <h2 className="font-serif mb-6 flex-center text-6xl">Home</h2>
+          <p1 className="font-serif flex-center text-2xl">Please Login Or Create and Account</p1>
          </main>
-          <li>
-             <Link to ="/login"> Login Portal </Link>
+          <li className="font-serif ">
+             <Link to ="/login" className="hover:text-blue-700"> Login Portal </Link>
           </li>
-          <li>
-             <Link to ="/createaccount"> Create Account </Link>
+          <li className="font-serif">
+             <Link to ="/createaccount" className="hover:text-blue-700"> Create Account </Link>
           </li>
        </nav>
        ) : (

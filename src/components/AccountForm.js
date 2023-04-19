@@ -24,10 +24,10 @@ const submitHandler = e => {
                 <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
             </div>
             <div className="form-group">
-                <input type="submit" value="Create" />
+                <input className='hover:text-blue-700' type="submit" value="Create" />
             </div>
             <nav>
-             <Link to = "/"> Home </Link>
+             <Link to = "/" className='hover:text-blue-700'> Home </Link>
           </nav >
         </div>
    </form>

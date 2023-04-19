@@ -28,22 +28,22 @@ function HomeScreen() {
           </li>
        </nav>
        ) : (
-          <nav>
-             <main>   
-          <h2>Home</h2>
-          <p1>Welcome, {Logged.userName}!</p1>
+          <nav className="font-serif">
+             <main className="font-serif">   
+          <h2 className="font-serif text-3xl">Home</h2>
+          <p1 className="font-serif text-2xl">Welcome, {Logged.userName}!</p1>
          </main>
           <li>
-             <Link to = "/hardware"> Hardware </Link>
+             <Link to = "/hardware" className="font-serif hover:text-blue-700"> Hardware </Link>
           </li>
           <li>
-             <Link to = "/project"> Projects </Link>
+             <Link to = "/project" className="font-serif hover:text-blue-700"> Projects </Link>
           </li>
           <li>
-             <Link to ="/dataset"> Data Set </Link>
+             <Link to ="/dataset" className="font-serif hover:text-blue-700"> Data Set </Link>
           </li>
           <li>
-             <Link to ="/logout"> Logout </Link>
+             <Link to ="/logout" className="font-serif hover:text-blue-700"> Logout </Link>
           </li>
           
        </nav>

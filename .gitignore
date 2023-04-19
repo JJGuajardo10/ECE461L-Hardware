@@ -1,3 +1,11 @@
 node_modules/
+<<<<<<< Updated upstream
 env/
 backend/
+=======
+ece461l-hardware/
+env/
+build/
+
+
+>>>>>>> Stashed changes

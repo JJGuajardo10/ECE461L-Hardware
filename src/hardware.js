@@ -43,6 +43,9 @@ function Hardware(){
 
   return(
     <>
+    <div className="font-serif text-3xl">Hardware Management</div>
+      <br></br>
+      <br></br>
       <h2 className="font-serif">Add a hardware set</h2>
       <div className="font-serif">
           <h3>Enter a name and quantity</h3>
@@ -111,17 +114,24 @@ function Hardware(){
 
 	return (
       <>
+      <div className="font-serif text-3xl">Hardware Management</div>
          <h3 className="font-serif"> Joined Project Hardware </h3>
          <p className="font-serif"> Currently joined to project with ID: {currentProjectID} </p>
          <p className="font-serif"> Hardware allocated to current project: {projectHardware}</p>
          
          <button className="font-serif hover:text-blue-700" onClick = { () => getHardwareUpdate()}>Refresh values</button>
+
+         <br></br>
+         <br></br>
          
          <h3 className="font-serif"> HWSet1 </h3>
          <p className="font-serif"> Availability: {Hardware1}</p>
          <p className="font-serif"> Capacity: {Capacity1} </p>
          <GetHardwareButton1/>
          <ReturnHardwareButton1/>
+
+         <br></br>
+         <br></br>
          
          <h3 className="font-serif"> HWSet2 </h3>
          <p className="font-serif"> Availability: {Hardware2}</p>
@@ -133,10 +143,10 @@ function Hardware(){
       
          <nav className="font-serif">
             <li>
-               <Link to ="/"> Home </Link>
+               <Link to ="/" className="font-serif hover:text-blue-700"> Home </Link>
             </li>
             <li>
-               <Link to = "/project"> Projects </Link>
+               <Link to = "/project" className="font-serif hover:text-blue-700"> Projects </Link>
             </li>
          </nav>
       </>

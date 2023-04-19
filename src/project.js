@@ -76,7 +76,7 @@ function Project_Board(){
 
    return (
       <>
-         <br></br>
+      <div className="font-serif text-3xl">Project Management</div>
          <br></br>
 
           <form>
@@ -128,9 +128,10 @@ function Project_Board(){
          
          <p className="font-serif"> You Have Joined: {serverResponse} </p>
 
+         <br></br>
+         <br></br>
 
-
-         <nav className="font-serif">
+         <nav className="font-serif hover:text-blue-700">
             <li>
                <Link to ="/"> Home </Link>
             </li>

@@ -46,31 +46,35 @@ function Dataset()
   }
   return(
     <>
-      <h2> Display a Dataset Metadata</h2>
+      <h2 className="font-serif text-3xl"> Display a Dataset Metadata</h2>
       <div>
-          <h3>Enter a number 1-5 to get different datasets</h3>
+          <h3 className="font-serif">Enter a number 1-5 to get different datasets</h3>
           <input ref = {datasetNumField} type = "text" placeholder = "Enter the number(1-5) of the dataset" size = "26"></input>
         </div>
         <div>
-          <button onClick = {() => requestMetaData()}>Enter to return the amount</button>
+          <button onClick = {() => requestMetaData()} className="font-serif hover:text-blue-700">Enter to return the amount</button>
       </div>
       <div>
-        <label> The Database: {databaseName}</label>
+        <label className="font-serif"> The Database: {databaseName}</label>
         <br/>
         <br/>
-        <label> The Description: {description}</label>
+        <label className="font-serif"> The Description: {description}</label>
         <br/>
         <br/>
-        <label> The Entries: {entries}</label>
+        <label className="font-serif"> The Entries: {entries}</label>
         <br/>
         <br/>
-        <label> The Unit: {unit}</label>
+        <label className="font-serif"> The Unit: {unit}</label>
         <br/>
         <br/>
-        <label> The Link: </label>
+        <label className="font-serif"> The Link: </label>
         <p><a href={link}>{link}</a></p>
       </div>
-      <Link to = "/"> Home </Link>
+
+        <br></br>
+         <br></br>
+
+      <Link to = "/" className="font-serif hover:text-blue-700"> Home </Link>
       
     </>
   );

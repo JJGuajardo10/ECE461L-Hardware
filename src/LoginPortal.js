@@ -66,11 +66,11 @@ function LoginPortal() {
 
 
   return (
-    <div className="LoginPortal">
+    <div className="LoginPortal font-serif">
       {(user.password != "") ? (
-        <div className="welcome">
-          <h1>Welcome, {Logged.userName}!</h1>
-          <Link to = "/"> Home </Link>  
+        <div className="welcome font-serif">
+          <h1 className='font-serif text-3xl'>Welcome, {Logged.userName}!</h1>
+          <Link to = "/" className='font-serif hover:text-blue-700'> Home </Link>  
         </div>
       ) : (
         <LoginForm Login={Login} error={error} />

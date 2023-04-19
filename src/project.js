@@ -131,12 +131,12 @@ function Project_Board(){
          <br></br>
          <br></br>
 
-         <nav className="font-serif hover:text-blue-700">
+         <nav>
             <li>
-               <Link to ="/"> Home </Link>
+               <Link to ="/" className="font-serif hover:text-blue-700"> Home </Link>
             </li>
             <li>
-               <Link to = "/hardware"> Hardware</Link>
+               <Link to = "/hardware" className="font-serif hover:text-blue-700"> Hardware</Link>
             </li>
          </nav>
 

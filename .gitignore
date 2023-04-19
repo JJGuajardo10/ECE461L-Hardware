@@ -1,2 +1,5 @@
 node_modules/
 env/
+__pycache__/Database.cpython-311.pyc
+__pycache__/Encryptor.cpython-311.pyc
+__pycache__/HardwareSets.cpython-311.pyc

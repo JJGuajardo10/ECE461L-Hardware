@@ -1,6 +1,7 @@
 import React, {useRef} from "react";
 import { useState } from "react";
 import {Link} from "react-router-dom";
+import Navbar from "./components/Navbar";
 import currentProjectID from "./project_global";
 
 
@@ -76,6 +77,8 @@ function Project_Board(){
 
    return (
       <>
+      <Navbar/>
+      <br></br>  
       <div className="font-serif text-3xl">Project Management</div>
          <br></br>
 
@@ -120,25 +123,13 @@ function Project_Board(){
             </label>
          </form> 
 
-         <button onClick = {() => createProject()} className="font-serif hover:text-blue-700"> Create new project </button>
+         <button onClick = {() => createProject()} className="font-serif hover:bg-blue-700 bg-blue-500 text-white py-2 px-4 rounded"> Create new project </button>
 
          <p className = "warning font-serif"> Do not use "!" or a space character </p>
             
             <GetProject/>
          
          <p className="font-serif"> You Have Joined: {serverResponse} </p>
-
-         <br></br>
-         <br></br>
-
-         <nav>
-            <li>
-               <Link to ="/" className="font-serif hover:text-blue-700"> Home </Link>
-            </li>
-            <li>
-               <Link to = "/hardware" className="font-serif hover:text-blue-700"> Hardware</Link>
-            </li>
-         </nav>
 
       </>
    )
@@ -186,7 +177,7 @@ function GetProject()
          </label>
         </div>
         <div>
-          <button onClick = {() => sendCredentials()} className="font-serif hover:text-blue-700">Join a project</button>
+          <button onClick = {() => sendCredentials()} className="font-serif font-serif hover:bg-blue-700 bg-blue-500 text-white py-2 px-4 rounded">Join a project</button>
          <p className="font-serif">Server Response for joining a project is: {serverResponse}</p>
       </div>
     </>

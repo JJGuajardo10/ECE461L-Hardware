@@ -1,6 +1,7 @@
 import { SettingsInputHdmiTwoTone } from '@mui/icons-material';
 import React, { useState, useRef } from 'react';
 import {Link} from "react-router-dom";
+import Navbar from './components/Navbar';
 
 function Dataset()
 {
@@ -46,13 +47,15 @@ function Dataset()
   }
   return(
     <>
+    <Navbar/>
+    <br></br>  
       <h2 className="font-serif text-3xl"> Display a Dataset Metadata</h2>
       <div>
           <h3 className="font-serif">Enter a number 1-5 to get different datasets</h3>
           <input ref = {datasetNumField} type = "text" placeholder = "Enter the number(1-5) of the dataset" size = "26"></input>
         </div>
         <div>
-          <button onClick = {() => requestMetaData()} className="font-serif hover:text-blue-700">Enter to return the amount</button>
+          <button onClick = {() => requestMetaData()} className="font-serif hover:bg-blue-700 bg-blue-500 text-white py-2 px-4 rounded">Enter to return the amount</button>
       </div>
       <div>
         <label className="font-serif"> The Database: {databaseName}</label>
@@ -70,11 +73,6 @@ function Dataset()
         <label className="font-serif"> The Link: </label>
         <p><a href={link}>{link}</a></p>
       </div>
-
-        <br></br>
-         <br></br>
-
-      <Link to = "/" className="font-serif hover:text-blue-700"> Home </Link>
       
     </>
   );

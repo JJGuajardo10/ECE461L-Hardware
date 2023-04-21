@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import {Link} from "react-router-dom";
 import "./hardware_formatting.css"
 import currentProjectID from "./project_global"
+import Navbar from './components/Navbar';
 
 function Hardware(){
 	const [Hardware1, SetHardware1] = useState("");
@@ -114,12 +115,15 @@ function Hardware(){
 
 	return (
       <>
+      <Navbar/>
+      <br></br>
+      
       <div className="font-serif text-3xl">Hardware Management</div>
          <h3 className="font-serif"> Joined Project Hardware </h3>
          <p className="font-serif"> Currently joined to project with ID: {currentProjectID} </p>
          <p className="font-serif"> Hardware allocated to current project: {projectHardware}</p>
          
-         <button className="font-serif hover:text-blue-700" onClick = { () => getHardwareUpdate()}>Refresh values</button>
+         <button className="font-serif hover:bg-blue-700 bg-blue-500 text-white py-2 px-4 rounded" onClick = { () => getHardwareUpdate()}>Refresh values</button>
 
          <br></br>
          <br></br>
@@ -141,14 +145,6 @@ function Hardware(){
          
          <br></br>
       
-         <nav className="font-serif">
-            <li>
-               <Link to ="/" className="font-serif hover:text-blue-700"> Home </Link>
-            </li>
-            <li>
-               <Link to = "/project" className="font-serif hover:text-blue-700"> Projects </Link>
-            </li>
-         </nav>
       </>
    )
 }
@@ -199,7 +195,7 @@ function GetHardwareButton1(){
          <label className="font-serif"> Get Hardware from HWSet1 </label>
          <input ref = {requestfield1} type="number" placeholder={"Enter request"}></input>
          <div> 
-            <button onClick = { () => getHardwareFrom1()} className="font-serif hover:text-blue-700">
+            <button onClick = { () => getHardwareFrom1()} className="font-serif hover:bg-blue-700 bg-blue-500 text-white py-2 px-4 rounded">
                Checkout hardware 
             </button>
             <p className="font-serif"> Server Response: {getStatus1} </p>
@@ -241,7 +237,7 @@ function GetHardwareButton2(){
          <label className="font-serif"> Get Hardware from HWSet2 </label>
          <input ref = {requestfield2} type="number" placeholder={"Enter request"}></input>
          <div className="font-serif"> 
-            <button onClick = { () => getHardwareFrom2()} className="font-serif hover:text-blue-700">
+            <button onClick = { () => getHardwareFrom2()} className="font-serif hover:bg-blue-700 bg-blue-500 text-white py-2 px-4 rounded">
                Checkout hardware 
             </button>
             <p className="font-serif"> Server response: {getStatus2} </p>
@@ -283,7 +279,7 @@ function ReturnHardwareButton1(){
          <label className="font-serif">  Enter amount of hardware to return: </label>
          <input ref = {returnfield1} type="number" placeholder="Enter an amount"></input>
          <br></br>
-         <button onClick = { () => returnHardwareTo1() } className="font-serif hover:text-blue-700"> Return hardware </button>
+         <button onClick = { () => returnHardwareTo1() } className="font-serif hover:bg-blue-700 bg-blue-500 text-white py-2 px-4 rounded"> Return hardware </button>
          <p className="font-serif"> Server Response: {returnStatus1} </p>
       </>
    )	
@@ -322,7 +318,7 @@ function ReturnHardwareButton2(){
          <label className="font-serif">  Enter amount of hardware to return: </label>
          <input ref = {returnfield2} type="number" placeholder="Enter an amount"></input>
          <br></br>
-         <button onClick = { () => returnHardwareTo2() } className="font-serif hover:text-blue-700"> Return hardware </button>
+         <button onClick = { () => returnHardwareTo2() } className="font-serif hover:bg-blue-700 bg-blue-500 text-white py-2 px-4 rounded"> Return hardware </button>
          <p className="font-serif"> Server Response: {returnStatus2} </p>
          
       </>

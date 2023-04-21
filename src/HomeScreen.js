@@ -7,6 +7,7 @@ import LoginPortal from "./LoginPortal";
 import CreateAccount from "./CreateAccount";
 import Dataset from "./Dataset";
 import Logged from "./Logged";
+import Navbar from "./components/Navbar";
 
 
 
@@ -29,22 +30,12 @@ function HomeScreen() {
        </nav>
        ) : (
           <nav className="font-serif">
-             <main className="font-serif">   
+            <Navbar/>
+             <main className="font-serif"> 
+             <br></br>  
           <h2 className="font-serif text-3xl">Home</h2>
           <p1 className="font-serif text-2xl">Welcome, {Logged.userName}!</p1>
          </main>
-          <li>
-             <Link to = "/hardware" className="font-serif hover:text-blue-700"> Hardware </Link>
-          </li>
-          <li>
-             <Link to = "/project" className="font-serif hover:text-blue-700"> Projects </Link>
-          </li>
-          <li>
-             <Link to ="/dataset" className="font-serif hover:text-blue-700"> Data Set </Link>
-          </li>
-          <li>
-             <Link to ="/logout" className="font-serif hover:text-blue-700"> Logout </Link>
-          </li>
           
        </nav>
        )}

@@ -1,0 +1,15 @@
+We don't really have a formalized system for regression testing, so instead we just run through the steps to 
+ensure that the system's prior functionality is effective.
+
+Regression Test Steps:
+--- Existing elements in database test ---
+1. Click Login Page after project loads up. Login with the existing userid combination "SteveJobs" and "Apple" for password
+2. Enter project tab, and join project with id "1234". This project should be the "MacBookPro" project
+3. Enter hardware tab to view that current project is id: 1234
+
+--- Add new elements to database test ---
+1. Create new user with a new userid and pswd combination
+2. Login with said new user
+3. Enter Projects and create a new project using a unique project id and whatever project details you are interested in
+4. Join this newly created project
+5. Enter the hardware tab and view the details of the newly created project

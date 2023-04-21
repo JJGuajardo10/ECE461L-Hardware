@@ -1,4 +1,3 @@
-
 from pymongo import MongoClient
 import Encryptor
 
@@ -331,7 +330,7 @@ class DatabaseImpl:
     # Input: name - name of the project, description- a string, projectid -  number to identify the project
     # Output: Singal telling whether the insertion was a success or failure
     # Purpose: Inserts a new project/post into the ProjectCollection
-    def createProject(self, name, description, projectid):
+    def createProject(self, name, description, projectid, hardware):
         # If there already is a project with this project id, return a failure signal
         if (self.__db.ProjectCollection.find_one({"projectid": projectid}) != None):
             # print("Error: Nonunique Project ID.")
@@ -341,7 +340,7 @@ class DatabaseImpl:
             "name": name,
             "description": description,
             "projectid": projectid,
-            "hardware": 0
+            "hardware": hardware
         }
         # Insert the project document/post
         self.__db.ProjectCollection.insert_one(projectDoc)
@@ -391,4 +390,3 @@ class DatabaseImpl:
     # Purpose: Close the cluster/connection to mongodb
     def closeClient(self):
         self.myClient.close()
-

@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from "react";
 import {Link} from "react-router-dom";
+import Navbar from "./components/Navbar";
 import "./hardware_formatting.css"
 import currentProjectID from "./project_global"
 
@@ -63,34 +64,28 @@ function Hardware(){
 	return (
 
       <>
-         <h3> Joined Project Hardware </h3>
-         <p> Currently joined to project with ID: {currentProjectID} </p>
-         <p> Hardware allocated to current project: {projectHardware}</p>
+      <Navbar/>
+      <br></br>
+         <h3 className="font-serif text-2xl"> Joined Project Hardware </h3>
+         <p className="font-serif"> Currently joined to project with ID: {currentProjectID} </p>
+         <p className="font-serif"> Hardware allocated to current project: {projectHardware}</p>
          <AddHW/>
-         <button onClick = { () => getHardwareUpdate()}>Refresh values</button>
-         
-         <h3> HWSet1 </h3>
-         <p> Availability: {Hardware1}</p>
-         <p> Capacity: {Capacity1} </p>
+         <button className="font-serif bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded" onClick = { () => getHardwareUpdate()}>Refresh values</button>
+
+         <br></br>
+         <br></br>
+         <h3 className="font-serif text-2xl"> HWSet1 </h3>
+         <p className="font-serif"> Availability: {Hardware1}</p>
+         <p className="font-serif"> Capacity: {Capacity1} </p>
          <GetHardwareButton1/>
          <ReturnHardwareButton1/>
-         
-         <h3> HWSet2 </h3>
-         <p> Availability: {Hardware2}</p>
-         <p> Capacity: {Capacity2} </p>
+         <br></br>
+         <h3 className="font-serif text-2xl"> HWSet2 </h3>
+         <p className="font-serif"> Availability: {Hardware2}</p>
+         <p className="font-serif"> Capacity: {Capacity2} </p>
          <GetHardwareButton2/>
          <ReturnHardwareButton2/>
          
-         <br></br>
-      
-         <nav>
-            <li>
-               <Link to ="/"> Home </Link>
-            </li>
-            <li>
-               <Link to = "/project"> Projects </Link>
-            </li>
-         </nav>
       </>
    )
 }
@@ -138,13 +133,13 @@ function GetHardwareButton1(){
 	
    return(   
       <>
-         <label> Get Hardware from HWSet1 </label>
+         <label className="font-serif"> Get Hardware from HWSet1 </label>
          <input ref = {requestfield1} type="number" placeholder={"Enter request"}></input>
-         <div> 
-            <button onClick = { () => getHardwareFrom1()}>
+         <div className="font-serif"> 
+            <button className="font-serif bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded" onClick = { () => getHardwareFrom1()}>
                Checkout hardware 
             </button>
-            <p> Server Response: {getStatus1} </p>
+            <p className="font-serif"> Server Response: {getStatus1} </p>
          </div>
       </>
    ) 
@@ -180,10 +175,10 @@ function GetHardwareButton2(){
 	
    return (
       <>
-         <label> Get Hardware from HWSet2 </label>
+         <label className="font-serif"> Get Hardware from HWSet2 </label>
          <input ref = {requestfield2} type="number" placeholder={"Enter request"}></input>
-         <div> 
-            <button onClick = { () => getHardwareFrom2()}>
+         <div className="font-serif"> 
+            <button className="font-serif bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded" onClick = { () => getHardwareFrom2()}>
                Checkout hardware 
             </button>
             <p> Server response: {getStatus2} </p>
@@ -222,11 +217,11 @@ function ReturnHardwareButton1(){
 
    return (
       <>
-         <label>  Enter amount of hardware to return: </label>
+         <label className="font-serif">  Enter amount of hardware to return: </label>
          <input ref = {returnfield1} type="number" placeholder="Enter an amount"></input>
          <br></br>
-         <button onClick = { () => returnHardwareTo1() }> Return hardware </button>
-         <p> Server Response: {returnStatus1} </p>
+         <button className="font-serif bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded" onClick = { () => returnHardwareTo1() }> Return hardware </button>
+         <p className="font-serif"> Server Response: {returnStatus1} </p>
       </>
    )	
 }
@@ -264,17 +259,18 @@ function AddHW()
 
   return(
     <>
-      <h2>Add a hardware set</h2>
+      <h2 className="font-serif" >Add a hardware set</h2>
       <div>
-          <h3>Enter a name and quantity</h3>
-          <input ref = {namefield} type = "text" placeholder = "Enter a set name" size = "21"></input>
+          <h3 className="font-serif" >Enter a name and quantity</h3>
+          <input className="font-serif" ref = {namefield} type = "text" placeholder = "Enter a set name" size = "21"></input>
         </div>
         <div>
-          <input ref = {qfield} type = "text" placeholder = "Enter an amount" size = "21"></input>
+          <input className="font-serif" ref = {qfield} type = "text" placeholder = "Enter an amount" size = "21"></input>
         </div>
         <div>
-          <button onClick = {() => sendCredentials()}>Enter</button>
-         <label>{serverResponse}</label>
+          <button className="font-serif bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded" onClick = {() => sendCredentials()}>Enter</button>
+          <br></br>
+         <label className="font-serif" >{serverResponse}</label>
       </div>
 
     </>
@@ -312,15 +308,15 @@ function GetHW()
   }
   return(
     <>
-      <h2> Get hardware set data</h2>
+      <h2 className="font-serif"> Get hardware set data</h2>
       <div>
-          <h3>Enter the name of the hardware set you want data from</h3>
-          <input ref = {nameField} type = "text" placeholder = "Name of the hwset" size = "26"></input>
+          <h3 className="font-serif" >Enter the name of the hardware set you want data from</h3>
+          <input className="font-serif" ref = {nameField} type = "text" placeholder = "Name of the hwset" size = "26"></input>
         </div>
         <div>
-          <button onClick = {() => requestMetaData()}>Enter</button>
+          <button className="font-serif bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded" onClick = {() => requestMetaData()}>Enter</button>
       </div>
-      <label>{serverResponse}</label>
+      <label className="font-serif">{serverResponse}</label>
 
     </>
   );
@@ -355,11 +351,12 @@ function ReturnHardwareButton2(){
 
    return (
       <>
-         <label>  Enter amount of hardware to return: </label>
-         <input ref = {returnfield2} type="number" placeholder="Enter an amount"></input>
+         <label className="font-serif" >  Enter amount of hardware to return: </label>
+         <input className="font-serif" ref = {returnfield2} type="number" placeholder="Enter an amount"></input>
          <br></br>
-         <button onClick = { () => returnHardwareTo2() }> Return hardware </button>
-         <p> Server Response: {returnStatus2} </p>
+         <button className="font-serif bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded" onClick = { () => returnHardwareTo2() }> Return hardware </button>
+         <p className="font-serif"> Server Response: {returnStatus2} </p>
+         <br></br>
          
       </>
    )	

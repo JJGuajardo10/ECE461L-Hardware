@@ -40,7 +40,7 @@ function HomeScreen() {
              <Link to = "/project"> Projects </Link>
           </li>
           <li>
-             <Link to ="/logout"> Logout Test</Link>
+             <Link to ="/logout"> Logout </Link>
           </li>
           
        </nav>

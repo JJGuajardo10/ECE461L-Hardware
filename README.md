@@ -31,9 +31,9 @@ R3-3:
 1. Unit tests for necessary js and python components can be found in the test folder of this codebase. Details for how we run our regression tests can also be found in the test folder, within the regressionTest text file
 ###########################################################################################################################################
 R3-4:
-1. had to excise subltly duplicated functionality, specifically due to merging branches between team members. Happened very infrequently but the refactoring was done after CP2.
+1. had to excise subltly duplicated functionality, specifically due to merging branches between team members. Happened very infrequently but the refactoring was done after CP2. An example is that we refactored out the dataset file, which we realized was not needed since it's functionality was relatively covered by the hardware page and was otherwise not needed for the stakeholders.
 
-2. Due to not meeting certain requirements for stakeholder evaluations during CP2, we worked towards augmenting the post_cp2 code base to fix those issues, namely the missing checkin/checkout functionality
+2. Due to not meeting certain requirements for stakeholder evaluations during CP2, we worked towards augmenting the post_cp2 code base to fix those issues, namely the missing checkin/checkout functionality. 
 
 3. Formalized unit and regression testing practices post_cp2, and refactored after incorporating these new tests to excise extraneous testing methods.
 ###########################################################################################################################################

@@ -270,14 +270,14 @@ class DatabaseImpl:
                     self.__db.ProjectCollection.update_one({"projectid": projectid}, newhw)
                     return 0
                 else:
-                    # Otherwise, there is not, checkout whatever is left by setting avail to 0, return success
+                    # Otherwise, there is not, checkout whatever is left by setting avail to 0, return modified errorcode denoting overflow request
                     availability = hardware["availability"]
                     currenthardware = project["hardware"]
                     values = {"$set": {"availability": 0}}
                     newhw = {"$set": {"hardware": currenthardware + availability}}
                     self.__db.HardwareCollection.update_one({"name": hardwareName}, values)
                     self.__db.ProjectCollection.update_one({"projectid": projectid}, newhw)
-                    return 0
+                    return 1
         else:
             if (hardware == None) or (project == None):
                 return -1
@@ -305,7 +305,7 @@ class DatabaseImpl:
                         newhw = {"$set": {"hardware": currenthardware - (capacity - availability)}}
                         self.__db.HardwareCollection.update_one({"name": hardwareName}, values)
                         self.__db.ProjectCollection.update_one({"projectid": projectid}, newhw)
-                        return 0
+                        return 1
 
 
                 else:
@@ -316,14 +316,14 @@ class DatabaseImpl:
                         newhw = {"$set": {"hardware": 0}}
                         self.__db.HardwareCollection.update_one({"name": hardwareName}, values)
                         self.__db.ProjectCollection.update_one({"projectid": projectid}, newhw)
-                        return 0
+                        return 1
                     else:
                         # can't return all of it, so return as much as you can.
                         values = {"$set": {"availability": capacity}}
                         newhw = {"$set": {"hardware": currenthardware - (capacity - availability)}}
                         self.__db.HardwareCollection.update_one({"name": hardwareName}, values)
                         self.__db.ProjectCollection.update_one({"projectid": projectid}, newhw)
-                        return 0
+                        return 1
 
     '''Project Methods'''
 

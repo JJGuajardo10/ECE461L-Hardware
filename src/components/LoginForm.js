@@ -12,22 +12,22 @@ const submitHandler = e => {
 
   return (
    <form onSubmit={submitHandler}>
-       <div className="form-inner">
-           <h2>Login</h2>
+       <div className="form-inner font-serif">
+           <h2 className='font-serif text-3xl'>Login</h2>
            {(error != "") ? ( <div className="error">{error}</div>) : ""}
             <div className="form-group">
-                <label htmlFor="">Name: </label>
+                <label className='font-serif' htmlFor="">Name: </label>
                 <input type="text" name="name" id="name" onChange={e => setDetails({...details, name: e.target.value})} value={details.name} />
             </div>
             <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password" className='font-serif'>Password</label>
                 <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
             </div>
             <div className="form-group">
-                <input type="submit" value="LOGIN" />
+                <input className='font-serif hover:text-blue-700' type="submit" value="LOGIN" />
             </div>
             <nav>
-             <Link to = "/"> Home </Link>
+             <Link to = "/" className='font-serif hover:text-blue-700'> Home </Link>
           </nav >
         </div>
    </form>

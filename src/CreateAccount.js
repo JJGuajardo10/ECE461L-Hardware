@@ -82,10 +82,10 @@ function CreateAccount() {
 
 
   return (
-    <div className="CreateAccount">
+    <div className="CreateAccount font-serif">
       {(user.password != "") ? (
-        <div className="welcome">
-          <h2>Welcome, <span>{user.name}</span></h2>
+        <div className="welcome font-serif">
+          <h2 className='font-serif'>Welcome, <span>{user.name}</span></h2>
           <button onClick={Logout}>Logout</button>
         </div>
       ) : (

@@ -65,7 +65,7 @@ function Hardware(){
       <>
          <h3> Joined Project Hardware </h3>
          <p> Currently joined to project with ID: {currentProjectID} </p>
-         <p> Hardware allocated to current project: {projectHardware}</p>
+         <p> Amount of Currently Checked Out Hardware: {projectHardware}</p>
          <AddHW/>
          <button onClick = { () => getHardwareUpdate()}>Refresh values</button>
          
@@ -129,8 +129,10 @@ function GetHardwareButton1(){
       if (responseJson["errorcode"] == 0){
          setGetStatus1("Successfully requested hardware from hardware set 1.")
       }
-      else {
-         setGetStatus1("Error in trying to return hardware to hardware set 1.")
+      else if (responseJson["errorcode"] == 1){
+         setGetStatus1("Hardware Query overflowed current availability/capacity. Current maximum query value was instead applied for your query")
+      }else{
+         setGetStatus1("Error in trying to request hardware to hardware set 1.")
       }
       
 		
@@ -173,7 +175,9 @@ function GetHardwareButton2(){
       if (responseJson ["errorcode"] == 0){
          setGetStatus2("Successfully requested hardware from hardware set 2.")
       }
-      else {
+      else if (responseJson["errorcode"] == 1){
+         setGetStatus2("Hardware Query overflowed current availability/capacity. Current maximum query value was instead applied for your query")
+      }else {
          setGetStatus2("Error in trying to return hardware to hardware set 2.")
       }
 	}
@@ -214,6 +218,8 @@ function ReturnHardwareButton1(){
       console.log(responseJson)
       if (responseJson["errorcode"] == 0){
          setReturnStatus1("Successfully returned hardware to hardware set 1.")
+      } else if (responseJson["errorcode"] == 1){
+         setReturnStatus1("Hardware Query overflowed current availability/capacity. Current maximum query value was instead applied for your query")
       }
       else {
          setReturnStatus1("Error in trying to return hardware to hardware set 1.")
@@ -347,6 +353,9 @@ function ReturnHardwareButton2(){
       let responseJson = await res.json();
       if (responseJson["errorcode"] == 0){
          setReturnStatus2("Successfully returned hardware to hardware set 2.")
+      }
+      else if (responseJson["errorcode"] == 1){
+         setReturnStatus2("Hardware Query overflowed current availability/capacity. Current maximum query value was instead applied for your query")
       }
       else {
          setReturnStatus2("Error in trying to return hardware to hardware set 2.")

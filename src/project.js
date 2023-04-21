@@ -1,6 +1,7 @@
 import React, {useRef} from "react";
 import { useState } from "react";
 import {Link} from "react-router-dom";
+import Navbar from "./components/Navbar";
 import currentProjectID from "./project_global";
 
 
@@ -110,61 +111,52 @@ function Project_Board(){
 
    return (
       <>
+      <Navbar/>
          <br></br>
+         <div className="font-serif text-3xl">Project Management</div>
          <br></br>
 
           <form>
-            <label> 
+            <label className="font-serif"> 
                Enter a project name: 
-               <input 
+               <input className="font-serif"
                   ref = {name_field}
-                  type = "text" placeholder = "Enter a name" 
+                  type = "text" placeholder = " Enter a name" 
                />
             </label>
          <br></br>
-            <label>
+            <label className="font-serif">
                Enter a project ID: 
-               <input 
+               <input className="font-serif"
                   ref = {id_field}
-                  type = "text" placeholder = "Enter a project ID" 
+                  type = "text" placeholder = " Enter a project ID" 
                />
             </label>
          <br></br>
-            <label>
+            <label className="font-serif">
                Enter a project description:
-               <input 
+               <input className="font-serif"
                   ref = {description_field}
-                  type = "text" placeholder = "Enter a project desc."
+                  type = "text" placeholder = " Enter a project desc."
                />
             </label>
             <br></br>
-            <label>
+            <label className="font-serif">
                Enter Capacity for HWSet 1:
-               <input
+               <input className="font-serif"
                   ref = {HWSet1Cap_field}
-                  type = "text" placeholder = "Enter  Value"
+                  type = "text" placeholder = " Enter  Value"
                />
             </label><br></br>
          </form> 
 
-         <button onClick = {() => createProject()}> Create new project </button>
+         <button className="font-serif bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" onClick = {() => createProject()}> Create new project </button>
 
-         <p className = "warning"> Do not use "!" or a space character </p>
+         <p className = "warning font-serif"> Do not use "!" or a space character </p>
             
             <GetProject/>
          
-         <p> You Have Joined: {serverResponse} </p>
-
-
-
-         <nav>
-            <li>
-               <Link to ="/"> Home </Link>
-            </li>
-            <li>
-               <Link to = "/hardware"> Hardware</Link>
-            </li>
-         </nav>
+         <p className="font-serif"> You Have Joined: {serverResponse} </p>
       </>
    )
 
@@ -207,13 +199,13 @@ function GetProject()
     <>
       <div>
          <br></br>
-         <label>
+         <label className="font-serif">
           Enter Project ID to join:
-          <input ref = {namefield} type = "text" placeholder = "Enter a project id" size = "21"></input>
+          <input className="font-serif" ref = {namefield} type = "text" placeholder = " Enter a project id" size = "21"></input>
          </label>
         </div>
-        <div>
-          <button onClick = {() => sendCredentials()}>Join a project</button>
+        <div className="font-serif">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" onClick = {() => sendCredentials()}>Join a project</button>
          <p>Server Response for joining a project is: {serverResponse}</p>
       </div>
     </>
@@ -235,7 +227,7 @@ class Project extends React.Component{
       const description = this.props.description;
       const availableHardwareUnits = this.state.availableHardwareUnits;
       return (
-         <div>
+         <div className="font-serif">
             <p> Project id: {id} </p>
             <p> Project name: {name} </p>
             <p> Project description: {description} </p>

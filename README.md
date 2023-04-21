@@ -15,8 +15,10 @@ That's it for the installation of dependancies!
 
 Steps to run Project:
 1. Have two terminal windows open 
-2. In one terminal, run "npm start", which will start the client 
+2. In one terminal, run "npm run build", which will create the client-side build. 
 3. In the other terminal, enter your virtual environment and run 'python app.py" or "python3 app.py"
+4. Once the flask server is running, go to the other terminal and run serve -s build to start up the client side
+5. To access the web application, go to localhost 3000!
 
 Checkpoint 3 Notable Talking Points:
 ###########################################################################################################################################

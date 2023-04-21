@@ -134,7 +134,7 @@ function GetHardwareButton1(){
    return(   
       <>
          <label className="font-serif"> Get Hardware from HWSet1 </label>
-         <input ref = {requestfield1} type="number" placeholder={"Enter request"}></input>
+         <input className="font-serif" ref = {requestfield1} type="number" placeholder={"Enter request"}></input>
          <div className="font-serif"> 
             <button className="font-serif bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded" onClick = { () => getHardwareFrom1()}>
                Checkout hardware 
@@ -176,7 +176,7 @@ function GetHardwareButton2(){
    return (
       <>
          <label className="font-serif"> Get Hardware from HWSet2 </label>
-         <input ref = {requestfield2} type="number" placeholder={"Enter request"}></input>
+         <input className="font-serif" ref = {requestfield2} type="number" placeholder={"Enter request"}></input>
          <div className="font-serif"> 
             <button className="font-serif bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded" onClick = { () => getHardwareFrom2()}>
                Checkout hardware 
@@ -218,7 +218,7 @@ function ReturnHardwareButton1(){
    return (
       <>
          <label className="font-serif">  Enter amount of hardware to return: </label>
-         <input ref = {returnfield1} type="number" placeholder="Enter an amount"></input>
+         <input className="font-serif" ref = {returnfield1} type="number" placeholder="Enter an amount"></input>
          <br></br>
          <button className="font-serif bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded" onClick = { () => returnHardwareTo1() }> Return hardware </button>
          <p className="font-serif"> Server Response: {returnStatus1} </p>

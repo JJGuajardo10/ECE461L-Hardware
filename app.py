@@ -165,8 +165,9 @@ def createproject():
     name = myrequest['name']
     description = myrequest['description']
     projectid = myrequest['projectid']
+    hardware = myrequest['hardware']
 
-    verify = db.createProject(name, description, projectid)
+    verify = db.createProject(name, description, projectid, hardware)
     return {'errorcode': verify}
 
 
@@ -226,3 +227,4 @@ def closeclient():
 
 if __name__ == "__main__":
     app.run(host='localhost', debug=True, port=os.environ.get('PORT', 3000))
+# localhost

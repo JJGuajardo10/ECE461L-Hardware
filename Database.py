@@ -264,7 +264,7 @@ class DatabaseImpl:
                 # If there is enough availability to service the request, subtract that amount, return success
                 if (qty <= hardware["availability"]):
                     availability = hardware["availability"]
-                    currenthardware = project["hardware"]
+                    currenthardware = int(project["hardware"])
                     values = {"$set": {"availability": availability - qty}}
                     newhw = {"$set": {"hardware": qty + currenthardware}}
                     self.__db.HardwareCollection.update_one({"name": hardwareName}, values)
@@ -273,7 +273,7 @@ class DatabaseImpl:
                 else:
                     # Otherwise, there is not, checkout whatever is left by setting avail to 0, return success
                     availability = hardware["availability"]
-                    currenthardware = project["hardware"]
+                    currenthardware = int(project["hardware"])
                     values = {"$set": {"availability": 0}}
                     newhw = {"$set": {"hardware": currenthardware + availability}}
                     self.__db.HardwareCollection.update_one({"name": hardwareName}, values)
@@ -285,7 +285,7 @@ class DatabaseImpl:
 
             availability = hardware["availability"]
             capacity = hardware["capacity"]
-            currenthardware = project["hardware"]
+            currenthardware = int(project["hardware"])
 
             if (qty < 0):
                 print("Invalid. check-in quantity must be a nonnegative number.")

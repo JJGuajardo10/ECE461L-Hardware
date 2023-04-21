@@ -175,6 +175,7 @@ def createproject():
 def getproject():
     myrequest = request.get_json(force=True)
     name = myrequest['id']
+    print(str(name))
     project = db.getProject(name)
     if project == None:
         return {'errorcode': -1}

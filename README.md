@@ -6,6 +6,10 @@ Steps for Installing Dependancies
 2. create a virtual environment to run the server code (ex. python -m venv env)
 
 3. Enter the virtual environment and install the modules required for running the server code (just run python app.py or python3 app.py and pip install <package> for every package the system asks for you to install)
+    Note that the following packages are needed so far:
+    - pymongo
+    - flask
+    - wfdb
 
 That's it for the installation of dependancies!
 

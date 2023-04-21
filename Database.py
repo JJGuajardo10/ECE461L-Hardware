@@ -356,10 +356,13 @@ class DatabaseImpl:
     # Output: project document associated with the projectid, None if there is not one
     # Purpose: Getting project documentation/data
     def getProject(self, projectid):
+        print("All database values: " + str(self.__db.ProjectCollection.find_one({"projectid": 0})))
         if (self.__db.ProjectCollection.find_one({"projectid": projectid}) != None):
             query = self.__db.ProjectCollection.find_one({"projectid": projectid})
+            print("successful query of " + str(projectid) + " with a query return of: " + str(query))
             return query
         else:
+            print("query was unsuccessful for " + str(projectid))
             return None
 
     # Input: projectid - id of the project

@@ -12,6 +12,12 @@ function Project_Board(){
    const [HWSet1_cap, setCap1] = useState("")
    const [HWSet2_cap, setCap2] = useState("")
    const [serverResponse, setServerResponse] = useState("No response yet");
+   	const [Hardware1, SetHardware1] = useState("");
+	const [Hardware2, SetHardware2] = useState("");
+	const [Capacity1, SetCapacity1] = useState("");
+	const [Capacity2, SetCapacity2] = useState("");
+
+	const [projectHardware, SetProjectHardware] = useState ("");
    //to get user input from uncontrolled input fields
    const name_field = useRef();
    const description_field = useRef();
@@ -32,7 +38,6 @@ function Project_Board(){
       let createProjectID = id_field.current.value;
       let createProjectDescription =description_field.current.value;
       let assignHWSet1Cap = HWSet1Cap_field.current.value;
-      let assignHWSet2Cap = HWSet2Cap_field.current.value;
 
 
 
@@ -40,8 +45,8 @@ function Project_Board(){
       console.log("name " + createProjectName);
       console.log("projectid: " + createProjectID);
       console.log("project description: "+createProjectDescription);
-      //console.log("HWSET1 cap: " + assignHWSet1Cap);
-      //console.log("HWSET2 cap: " + assignHWSet2Cap);
+      console.log("project hardware allocation: " + assignHWSet1Cap);
+
 
       let postDict = {
          method: "POST",
@@ -49,8 +54,8 @@ function Project_Board(){
             name: createProjectName,
             projectid: createProjectID,
             description: createProjectDescription,
-            hwSet1: assignHWSet1Cap,
-            hwSet2: assignHWSet2Cap
+            hardware: assignHWSet1Cap,
+
          })
       };
 
@@ -72,7 +77,35 @@ function Project_Board(){
       console.log(responseJson)
       
    }
-   
+
+  const [serverResponse2, setServerResponse2] = useState("No Response yet");
+  const namefield = useRef();
+  const qfield = useRef();
+
+  async function sendCredentials()
+  {
+    let name = namefield.current.value;
+    let q = qfield.current.value;
+    console.log("Entered name: " + name);
+    console.log("Enter q: " + q);
+       // Fetch protocol
+       let dict = {
+        method : "POST",
+        body : JSON.stringify({
+          name: name,
+          capacity:  q
+        })
+      };
+      let res = await fetch("/createHWSet" , dict);
+      let responseJson = await res.json();
+      if(responseJson['errorcode'] == 0)
+      {
+        setServerResponse2("Hardware set added!");
+      }
+      else{
+        setServerResponse2("Set not added!");
+      }
+  }
 
    return (
       <>
@@ -105,19 +138,13 @@ function Project_Board(){
             </label>
             <br></br>
             <label>
-               Enter Capacity for HWSet 1:
+               Enter Allocated Hardware Quantity for Project:
                <input
                   ref = {HWSet1Cap_field}
                   type = "text" placeholder = "Enter  Value"
                />
             </label><br></br>
-            <label>
-               Enter Capacity for HWSet 2:
-               <input
-                  ref = {HWSet2Cap_field}
-                  type = "text" placeholder = "Enter Value"
-               />
-            </label>
+
          </form> 
 
          <button onClick = {() => createProject()}> Create new project </button>
@@ -138,11 +165,11 @@ function Project_Board(){
                <Link to = "/hardware"> Hardware</Link>
             </li>
          </nav>
-
       </>
    )
 
 }
+
 
 export default Project_Board;
 
@@ -170,7 +197,8 @@ function GetProject()
     let name = responseJson['name'];
     let projectid = responseJson['projectid'];
     let des = responseJson['description'];
-    setServerResponse("\nName: " + name + " \nProject id: " + projectid + " \nDescription: " + des);
+    let hard = responseJson['hardware'];
+    setServerResponse("\nName: " + name + " \nProject id: " + projectid + " \nDescription: " + des + "\nAllocated Hardware: " + hard);
 
      currentProjectID = projectid;
      console.log(currentProjectID)
@@ -195,8 +223,7 @@ class Project extends React.Component{
    constructor(props){
       super (props);
       this.state = {
-         availableHardwareSet1Units: props.availableHardwareSet1Units,
-         availableHardwareSet2Units: props.availableHardwareSet2Units
+         availableHardwareUnits: 50
       };
    }
 //renders an instance of the Project class
@@ -206,16 +233,182 @@ class Project extends React.Component{
       const id = this.props.id;
       const name = this.props.name;
       const description = this.props.description;
-      const availableHardwareSet1Units = this.state.availableHardwareUnits;
-      const availableHardwareSet2Units = this.state.availableHardwareSet2Units;
+      const availableHardwareUnits = this.state.availableHardwareUnits;
       return (
          <div>
             <p> Project id: {id} </p>
             <p> Project name: {name} </p>
             <p> Project description: {description} </p>
-            <p> Available hardware for HWSet1: {availableHardwareSet1Units} </p>
-            <p> Available hardware for HWSet2: {availableHardwareSet2Units}</p>
+            <p> Available hardware: {availableHardwareUnits} </p>
          </div>
       );
    }
+}
+function GetHardwareButton1(){
+   const requestfield1 = useRef();
+   const [getStatus1, setGetStatus1] = useState(2);
+
+	async function getHardwareFrom1(){
+		let toget1 = requestfield1.current.value;
+
+		let dict = {
+		method : "POST",
+         body : JSON.stringify({
+         hardwareName: "HWSet",
+          projectid: currentProjectID,
+          qty: toget1,
+          inout: "checkout"
+         })
+		};
+
+      console.log("about to request")
+		let res = await fetch("/hardwareToProject" , dict);
+      console.log("requested")
+		let responseJson = await res.json();
+
+      console.log(responseJson)
+
+      if (responseJson["errorcode"] == 0){
+         setGetStatus1("Successfully requested hardware from hardware set 1.")
+      }
+      else {
+         setGetStatus1("Error in trying to return hardware to hardware set 1.")
+      }
+
+
+	}
+
+   return(
+      <>
+         <label> Get Hardware from HWSet1 </label>
+         <input ref = {requestfield1} type="number" placeholder={"Enter request"}></input>
+         <div>
+            <button onClick = { () => getHardwareFrom1()}>
+               Checkout hardware
+            </button>
+            <p> Server Response: {getStatus1} </p>
+         </div>
+      </>
+   )
+
+}
+function GetHardwareButton2(){
+   const requestfield2 = useRef();
+   const [getStatus2, setGetStatus2] = useState(2);
+
+	async function getHardwareFrom2(){
+		let toget2 = requestfield2.current.value;
+
+		let dict = {
+         method : "POST",
+         body : JSON.stringify({
+         hardwareName: "HWSet2",
+          projectid: currentProjectID,
+          qty: toget2,
+          inout: "checkout"
+         })
+		};
+
+		let res = await fetch("/hardwareToProject" , dict);
+		let responseJson = await res.json();
+
+      if (responseJson ["errorcode"] == 0){
+         setGetStatus2("Successfully requested hardware from hardware set 2.")
+      }
+      else {
+         setGetStatus2("Error in trying to return hardware to hardware set 2.")
+      }
+	}
+
+   return (
+      <>
+         <label> Get Hardware from HWSet2 </label>
+         <input ref = {requestfield2} type="number" placeholder={"Enter request"}></input>
+         <div>
+            <button onClick = { () => getHardwareFrom2()}>
+               Checkout hardware
+            </button>
+            <p> Server response: {getStatus2} </p>
+         </div>
+      </>
+   )
+}
+
+function ReturnHardwareButton1(){
+   const returnfield1 = useRef();
+   const [returnStatus1, setReturnStatus1] = useState(2);
+
+   async function returnHardwareTo1(){
+      let return1 = returnfield1.current.value;
+
+      let dict = {
+         method: "POST",
+         body: JSON.stringify({
+            hardwareName: "HWSet",
+            qty: return1,
+            projectid: currentProjectID,
+            inout: "checkin"
+         })
+      };
+
+      let res = await fetch("/hardwareToProject", dict);
+      let responseJson = await res.json();
+      console.log(responseJson)
+      if (responseJson["errorcode"] == 0){
+         setReturnStatus1("Successfully returned hardware to hardware set 1.")
+      }
+      else {
+         setReturnStatus1("Error in trying to return hardware to hardware set 1.")
+      }
+   }
+
+   return (
+      <>
+         <label>  Enter amount of hardware to return: </label>
+         <input ref = {returnfield1} type="number" placeholder="Enter an amount"></input>
+         <br></br>
+         <button onClick = { () => returnHardwareTo1() }> Return hardware </button>
+         <p> Server Response: {returnStatus1} </p>
+      </>
+   )
+}
+
+
+function ReturnHardwareButton2(){
+   const returnfield2 = useRef();
+   const [returnStatus2, setReturnStatus2] = useState(2);
+
+   async function returnHardwareTo2(){
+      let return2 = returnfield2.current.value;
+
+      let dict = {
+         method: "POST",
+         body: JSON.stringify({
+            hardwareName: "HWSet2",
+            qty: return2,
+            projectid: currentProjectID,
+            inout: "checkin"
+         })
+      };
+
+      let res = await fetch("/hardwareToProject", dict);
+      let responseJson = await res.json();
+      if (responseJson["errorcode"] == 0){
+         setReturnStatus2("Successfully returned hardware to hardware set 2.")
+      }
+      else {
+         setReturnStatus2("Error in trying to return hardware to hardware set 2.")
+      }
+   }
+
+   return (
+      <>
+         <label>  Enter amount of hardware to return: </label>
+         <input ref = {returnfield2} type="number" placeholder="Enter an amount"></input>
+         <br></br>
+         <button onClick = { () => returnHardwareTo2() }> Return hardware </button>
+         <p> Server Response: {returnStatus2} </p>
+
+      </>
+   )
 }

@@ -5,7 +5,6 @@ import Hardware from "./hardware";
 import Project_Board from "./project";
 import LoginPortal from "./LoginPortal";
 import CreateAccount from "./CreateAccount";
-import Dataset from "./Dataset";
 import Logged from "./Logged";
 import HomeScreen from "./HomeScreen";
 import  Logout from "./Logout"
@@ -19,7 +18,6 @@ export default function App() {
                      <Route path = "Hardware" element ={<Hardware />} />
                      <Route path = "/createaccount" element = {<CreateAccount/>} />
                      <Route path = "Project" element = {<Project_Board/>} />
-                     <Route path = "dataset" element = {<Dataset/>} />
                      <Route path = "logout" element = {<Logout/>} />
                   </Routes>
                </div>

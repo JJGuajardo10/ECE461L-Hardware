@@ -5,8 +5,8 @@ import Hardware from "./hardware";
 import Project_Board from "./project";
 import LoginPortal from "./LoginPortal";
 import CreateAccount from "./CreateAccount";
-import Dataset from "./Dataset";
 import Logged from "./Logged";
+
 
 
 
@@ -40,10 +40,7 @@ function HomeScreen() {
              <Link to = "/project"> Projects </Link>
           </li>
           <li>
-             <Link to ="/dataset"> Data Set </Link>
-          </li>
-          <li>
-             <Link to ="/logout"> Logout </Link>
+             <Link to ="/logout"> Logout Test</Link>
           </li>
           
        </nav>
